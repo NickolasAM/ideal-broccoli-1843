@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Plant, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many :plot_plants }
+  it { should have_many(:plots). through(:plot_plants) }
 end

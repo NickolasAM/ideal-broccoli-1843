@@ -15,32 +15,9 @@ ActiveRecord::Schema.define(version: 2023_04_25_152547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "doctors", force: :cascade do |t|
-    t.bigint "hospital_id"
-    t.string "name"
-    t.string "specialty"
-    t.string "university"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["hospital_id"], name: "index_doctors_on_hospital_id"
-  end
-
   create_table "gardens", force: :cascade do |t|
     t.string "name"
     t.boolean "organic"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "hospitals", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "patients", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,7 +50,6 @@ ActiveRecord::Schema.define(version: 2023_04_25_152547) do
     t.index ["garden_id"], name: "index_plots_on_garden_id"
   end
 
-  add_foreign_key "doctors", "hospitals"
   add_foreign_key "plot_plants", "plants"
   add_foreign_key "plot_plants", "plots"
   add_foreign_key "plots", "gardens"
